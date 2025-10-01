@@ -1,0 +1,39 @@
+{
+  // ---------- Save behavior ----------
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500, // Auto-save after 500ms delay
+
+  // ---------- Formatting ----------
+  "editor.formatOnSave": true, // Run Prettier on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Use Prettier as default
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // ---------- ESLint: fix on save ----------
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit", // Run ESLint fixes on save
+    "source.organizeImports": "explicit" // Organize imports on save
+  },
+
+  // Languages ESLint should validate
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Use ESLint flat config (uncomment if using eslint.config.mjs)
+  // "eslint.useFlatConfig": true,
+
+  // For monorepos, auto-detect working directories
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  // Allow Prettier to work without a config file
+  "prettier.requireConfig": false,
+
+  // Optional: Show ESLint status in the status bar
+  "eslint.alwaysShowStatus": true
+}
