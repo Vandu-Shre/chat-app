@@ -1,0 +1,44 @@
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #1f2937;
+  color: #fff;
+  height: 40px;
+  border-bottom: 1px solid #374151;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+
+  .logout-btn {
+    background: #8a1c1c;
+    border: none;
+    color: white;
+    font-size: small;
+    padding: 6px 12px;
+    width: 70px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #712121;
+    }
+  }
+}
+
+.chat-body {
+  padding: 20px;
+  color: #e5e7eb;
+}

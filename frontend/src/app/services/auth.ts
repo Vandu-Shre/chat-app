@@ -36,6 +36,12 @@ export class AuthService {
   }
 
   logout() {
-    this.userSubject.next(null);
+    return this.http.post('http://localhost:4000/auth/logout', {}, { withCredentials: true }).pipe(
+      tap(() => this.userSubject.next(null)),
+      catchError((err) => {
+        console.error('Logout failed:', err);
+        return of(null);
+      })
+    );
   }
 }

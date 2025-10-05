@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import { User } from '../models/User';
 import logger from '../utils/logger';
 
-export const redirectToGitHub = (req: Request, res: Response) => {
+export const redirectToGitHub = (_req: Request, res: Response) => {
   const redirectUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`;
   logger.info('Redirecting to GitHub OAuth URL');
   res.redirect(redirectUrl);
@@ -71,9 +71,20 @@ export const loginWithGitHub = async (req: Request, res: Response) => {
     });
 
     logger.info(`JWT issued and user logged in: ${login}`);
-    res.redirect('http://localhost:4200'); // redirect to frontend
+    res.redirect('http://localhost:4200/chat'); // redirect to frontend
   } catch (err) {
     logger.error(`GitHub OAuth error: ${err}`);
     res.status(500).send('OAuth failed');
   }
+};
+
+export const logout = (req: Request, res: Response) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: false, // true in prod
+    sameSite: 'lax',
+  });
+
+  logger.info('User logged out and cookie cleared');
+  res.status(200).json({ message: 'Logged out successfully' });
 };
